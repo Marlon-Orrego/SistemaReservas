@@ -11,7 +11,7 @@ export const getClientes =async (req,res)=>{
     res.send(error.message);
   }
 }
-
+/*
 export const createNewProduct = async (req, res) => {
     const { name, description } = req.body;
     let { quantity } = req.body;
@@ -38,4 +38,4 @@ export const createNewProduct = async (req, res) => {
       res.send(error.message);
     }
   };
-  
+  */
