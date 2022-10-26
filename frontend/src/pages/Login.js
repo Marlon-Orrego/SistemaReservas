@@ -1,5 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
+import styles from "../styles";
+import ButtonL from "../components/ButtonLogin";
+
 
 export default function Login() {
     // CONSTANTE PARA LOS DATOS DEL USUARIO //
@@ -8,7 +11,7 @@ export default function Login() {
         password: ""
     })
     // CONSTANTE PARA LOS MENSAJES DE ERROR //
-    const [error, setError] = useState('Todo en Orden')
+    const [error, setError] = useState('')
     // MÉTODO QUE ACTUALIZA LOS DATOS DEL USUARIO //
     const handleChange = ({ target: { name, value } }) => {
         setError("")
@@ -36,31 +39,56 @@ export default function Login() {
     }
 
     return (
-        <div className='login__container'>
-            <div className='email__input__container'>
-                <input
-                    className='email__input'
-                    type='email'
-                    name='email'
-                    onChange={handleChange}
-                    placeholder='Correo'
-                />
-            </div>
-            <div className='password__input__container'>
-                <input
-                    className='password__input'
-                    type='password'
-                    name='password'
-                    onChange={handleChange}
-                    placeholder='Contraseña'
-                />
-            </div>
-            <div className='login__button__container'>
-            <button onClick={handleSummit} className='login__button'>Ingresar</button>
-            </div>
-            <div className='error__msg__container'>
-                <p className='error__msg'>{error}</p>
-            </div>
-        </div>
+        <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
+            <div className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}>
+                <h2 className={styles.heading2}>
+                    Iniciar Sesión
+                </h2>
+                <form className="mt-6">
+                    <div className="mb-2">
+                        <label
+                            htmlFor="email"
+                            className={styles.paragraph}
+                        >
+                            Email
+                        </label>
+                        <input
+                            type="email"
+                            onChange={handleChange}
+                            className="block w-full px-4 py-2 mt-2 text-black-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                    </div>
+                    <div className="mb-2">
+                        <label
+                            htmlFor="password"
+                            className={styles.paragraph}
+                        >
+                            Contraseña
+                        </label>
+                        <input
+                            type="password"
+                            onChange={handleChange}
+                            className="block w-full px-4 py-2 mt-2 text-black-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                    </div>
+                    <br></br>
+                    <div className={`${styles.flexCenter}`}>
+                        <ButtonL onClick={handleSummit} ></ButtonL>
+                    </div>
+                    <div className='error__msg__container'>
+                    <p className='error__msg'>{error}</p>
+                </div>
+                </form>
+
+                <p className="mt-8 text-xs font-light text-center text-white">
+                    {" "}
+                    No tienes una cuenta?{" "}
+                    <a
+                        href="/register"
+                        className="font-medium text-blue-600 hover:underline"
+                    >
+                        Registrate
+                    </a>
+                </p>
+            </div></div>
+
     )
 }

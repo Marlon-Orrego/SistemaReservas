@@ -1,8 +1,10 @@
-
+import Sillas from "../components/Sillas"
 
 function Asientos() {
     return(
-        <div></div>
+        <div>
+            <Sillas></Sillas>
+        </div>
     )
 }
 
