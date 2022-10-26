@@ -3,6 +3,8 @@ import styles from "../styles";
 import { logo, } from "../assets";
 import { navLinks } from "../constants";
 
+//HEADER
+
 const Navbar = () => {
   const [active, setActive] = useState("Home");
 

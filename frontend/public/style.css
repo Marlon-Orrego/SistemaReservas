@@ -66,14 +66,14 @@ body {
     background-color: #fff;
   }
 
-.bseat:nth-of-type(4) {
-    margin-right: 18px;
+.bseat:nth-of-type(2) {
+    margin-right: 60px;
 }
 .seat:nth-of-type(3) {
   margin-right: 60px;
 }
 .bseat:nth-of-type(1) {
-    margin-left: 70px;
+    margin-left: 90px;
 }
 .seat:nth-of-type(1) {
   margin-left: 70px;
