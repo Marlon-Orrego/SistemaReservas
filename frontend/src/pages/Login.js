@@ -62,13 +62,13 @@ export default function Login() {
                             name='email'
                             onChange={handleChange}
                             placeholder='Correo'
-                            className='block w-full px-4 py-2 mt-2 text-black-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40' />
+                            className='block w-80 px-4 py-2 mt-2 text-black-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40' />
                     </div>
 
                     <br></br>
 
                     <div className='mb-2'>
-                    <label
+                        <label
                             htmlFor="password"
                             className={styles.paragraph}
                         >
@@ -79,7 +79,7 @@ export default function Login() {
                             name='password'
                             onChange={handleChange}
                             placeholder='Contraseña'
-                            className="block w-full px-4 py-2 mt-2 text-black-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" />                      
+                            className="block w-full px-4 py-2 mt-2 text-black-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" />
                     </div>
 
                     <br></br>
@@ -89,10 +89,11 @@ export default function Login() {
                     </div>
 
                     <br></br>
-
-                    <div className='error__msg__container'>
-                        <p className='error__msg white'>{error}</p>
-                    </div>
+                    <center>
+                        <div className='error__msg__container'>
+                            <p className='error__msg white'>{error}</p>
+                        </div>
+                    </center>
 
                 </form>
 
@@ -108,6 +109,6 @@ export default function Login() {
                     </a>
                 </p>
             </div>
-        </div>    
+        </div>
     )
 }   

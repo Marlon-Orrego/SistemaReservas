@@ -33,10 +33,10 @@ export default function Register() {
     //METODO QUE VALIDA EL FORMULARIO
     const handleValidate = () => {
         var emailValido = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-        if (user.nombre.length < 8){
+        if (user.nombre.length < 8) {
             setError('Por favor ingrese su nombre completo')
             return false
-        } else if (user.cedula < 8 ) {
+        } else if (user.cedula < 8) {
             setError('Por favor ingrese una cedula valida')
             return false
         } else if (!user.email.match(emailValido)) {
@@ -57,9 +57,11 @@ export default function Register() {
 
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
             <div className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}>
-                <h2 className={styles.heading2}>
-                    Registro
-                </h2>
+                <center>
+                    <h2 className={styles.heading2}>
+                        Registro
+                    </h2>
+                </center>   
 
                 <form className="mt-6">
 
@@ -75,7 +77,7 @@ export default function Register() {
                             name='nombre'
                             onChange={handleChange}
                             placeholder='Nombre Completo'
-                            className="block w-full px-4 py-2 mt-2 text-black-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                            className="block w-80 px-4 py-2 mt-2 text-black-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" />
                     </div>
 
                     <div className="mb-2">
@@ -141,10 +143,11 @@ export default function Register() {
                         <button onClick={handleSubmit} type="button" href='/Asientos' className={`py-4 px-6 font-poppins font-medium text-[18px] text-primary bg-blue-gradient rounded-[10px] outline-none ${styles}`}>Registrarse</button>
                     </div>
                     <br></br>
-                    <div className='error__msg__container'>
-                        <p className='error__msg blue '>{error}</p>
-
-                    </div>
+                    <center>
+                        <div className='error__msg__container'>
+                            <p className='error__msg blue '>{error}</p>
+                        </div>
+                    </center>
                 </form >
 
                 <p className="mt-8 text-xs font-light text-center text-white">
