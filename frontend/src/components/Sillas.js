@@ -3,31 +3,26 @@ import '../css/sillas.css';
 
 function Sillas() {
     return (
-        <div>
-            <div>
+            
             <html lang="en">
             <head>
-                <meta charset="UTF-8"/>
-                <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                <link rel="stylesheet" href="style.css"/>
-                <title>Sillas</title>
+                <meta http-equiv="X-UA-Compatible" content="IE=edge"/>  
             </head>
-            <body>
+            <body className='seats'>
             <ul className="showcase">
                 <li>
                     <div className="seat"></div>
-                    <small>N/A</small>
+                    <small className='showcasetext'>N/A</small>
                 </li>
   
                 <li>
                     <div className="seat selected"></div>
-                    <small>Seleccionada</small>
+                    <small className='showcasetext'>Seleccionada</small>
                 </li>
   
                 <li>
                     <div className="seat occupied"></div>
-                    <small>Ocupada</small>
+                    <small className='showcasetext'>Ocupada</small>
                 </li>
             </ul>
   
@@ -38,7 +33,6 @@ function Sillas() {
                     <div className="bseat"></div>
                     <div className="bseat"></div>         
                 </div>  
-            <div className="container"/>
                 <div className="row">
                     <div className="bseat"></div>
                     <div className="bseat"></div>
@@ -109,9 +103,6 @@ function Sillas() {
 
             </body>
             </html>
-
-        </div>
-        </div>
     )
 }
 
