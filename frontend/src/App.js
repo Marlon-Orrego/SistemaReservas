@@ -28,10 +28,10 @@ function App() {
                 <Route path='/asientos' element={<Asientos />} />
               </Routes>
             </BrowserRouter>
+
         </div>
       </div>
     </div>
   );
 }
 export default App;
-

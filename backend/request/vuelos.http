@@ -1,0 +1,33 @@
+@api=http://localhost:3000/vuelos 
+
+GET {{api}}
+###
+
+POST {{api}}
+content-type: application/json 
+
+{
+    "Id_Vuelo": ,
+    "origen": "",
+    "destino": "",
+    "Fecha_salida": "",
+    "Fecha_llegada": ""
+  }
+###
+
+DELETE {{api}}/
+###
+
+PUT  {{api}}/10
+Content-Type: application/json
+
+{
+    "Id_Vuelo": ,
+    "origen": "",
+    "destino": "",
+    "Fecha_salida": "",
+    "Fecha_llegada": ""
+}
+###
+
+GET {{api}}/
