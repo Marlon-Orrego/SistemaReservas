@@ -32,7 +32,9 @@ export default function Register() {
     } else {
       console.log("No apto para el registro");
     }
+    
   };
+  
   //METODO QUE VALIDA EL FORMULARIO
   const handleValidate = () => {
     var correoValido =
