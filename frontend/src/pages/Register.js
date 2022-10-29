@@ -36,7 +36,7 @@ export default function Register() {
         if (user.nombre.length < 8) {
             setError('Por favor ingrese su nombre completo')
             return false
-        } else if (user.cedula < 8) {
+        } else if (user.cedula.length < 7) {
             setError('Por favor ingrese una cedula valida')
             return false
         } else if (!user.email.match(emailValido)) {
@@ -91,6 +91,7 @@ export default function Register() {
                             type="text"
                             placeholder='Cedula'
                             name='cedula'
+                            onChange={handleChange}
                             className="block w-full px-4 py-2 mt-2 text-black-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" />
                     </div>
 
