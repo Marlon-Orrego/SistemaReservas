@@ -1,62 +1,52 @@
 import styles from "../styles";
 import Button from "./Button";
+import React, { useEffect, useState } from "react";
+import moment from "moment";
+import { getVuelos } from "../pages/UseFetch";
 
-const Vuelos = () => (
-    <><><section className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}>
-    <div className="flex-1 flex flex-col">
-        <h2 className={styles.heading2}>Medellín-Titiribí</h2>
-        <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-            Duración: 30 Minutos
-        </p>
-        <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-            Fecha: 27/01/2022
-        </p>
-        <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-            Asientos: 50
-        </p>
-    </div>
+const Vuelos = () => {
+  const [vuelos, SetVuelos] = useState(null);
 
-    <div className={`${styles.flexCenter} sm:ml-10 ml-0 sm:mt-0 mt-10`}>
-        <Button />
-    </div>
-</section><section className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}>
-        <div className="flex-1 flex flex-col">
-            <h2 className={styles.heading2}>Medellín-Cartagena</h2>
-            <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-                Duración: 45 Minutos
-            </p>
-            <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-                Fecha: 27/01/2022
-            </p>
-            <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-                Asientos: 50
-            </p>
-        </div>
+  useEffect(() => {
+    getVuelos(SetVuelos);
+  }, []);
 
-        <div className={`${styles.flexCenter} sm:ml-10 ml-0 sm:mt-0 mt-10`}>
-            <Button />
-        </div>
-    </section></>
- <section className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}>
+  return (
+    <>
+      {vuelos != null
+        ? vuelos.map((vuelos) => (
+            <section
+              key={vuelos.Id_Vuelo}
+              className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}
+            >
               <div className="flex-1 flex flex-col">
-                  <h2 className={styles.heading2}>Cali-Barranquilla</h2>
-                  <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-                      Duración: 60 Minutos
-                  </p>
-                  <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-                      Fecha: 15/08/2022
-                  </p>
-                  <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-                      Asientos: 50
-                  </p>
+                <h2 className={styles.heading2}>
+                  {vuelos.origen}-{vuelos.destino}
+                </h2>
+                <p className={`${styles.heading3} max-w-[470px] mt-5`}>
+                  Fecha Salida
+                </p>
+                <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
+                  {moment(vuelos.Fecha_salida).utc().format("YYYY-MM-DD")}
+                </p>
+                <p className={`${styles.heading3} max-w-[470px] mt-5`}>
+                  Fecha Llegada
+                </p>
+                <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
+                  {moment(vuelos.Fecha_llegada).utc().format("YYYY-MM-DD")}
+                </p>
               </div>
-  
-              <div className={`${styles.flexCenter} sm:ml-10 ml-0 sm:mt-0 mt-10`}>
-                  <Button />
+
+              <div
+                className={`${styles.flexCenter} sm:ml-10 ml-0 sm:mt-0 mt-10`}
+              >
+                <Button />
               </div>
-          </section></>
-  
-    
+            </section>
+          ))
+        : "No hay Vuelos"}
+    </>
   );
-  
-  export default Vuelos; 
+};
+
+export default Vuelos;

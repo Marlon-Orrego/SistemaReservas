@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import styles from "../styles";
 import "../css/login.css";
-
 import axios from "axios";
 
 export default function Login() {
@@ -23,7 +22,7 @@ export default function Login() {
   // Maneja el registro
   const handleSubmit = () => {
     if (handleValidate()) {
-      let url = "http://localhost:3000/clientes ";
+      let url = "http://localhost:3000/clientes";
       axios.get(url, user).then((response) => {
         console.log(response);
       });
