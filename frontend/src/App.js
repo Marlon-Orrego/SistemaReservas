@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Inicial from "./pages/Inicial";
 import Register from "./pages/Register";
 import Asientos from "./pages/Asientos";
-import ProtectedRoute from "./components/ProtectedRoute";
+//import ProtectedRoute from "./components/ProtectedRoute";
 import NotFound from "./pages/404";
 //import Loading from './components/Loading';
 import "./css/App.css";
@@ -16,19 +16,11 @@ function App() {
         <div className="">
           <BrowserRouter>
             <Routes>
-              <Route
-                path="/asientos"
-                element={
-                  <ProtectedRoute>
-                    <Asientos />
-                  </ProtectedRoute>
-                }
-              />
+              <Route path="/asientos" element={<Asientos />} />
               <Route path="/" element={<Inicial></Inicial>}></Route>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="*" element={<NotFound />} />
-              <Route path="/asientos" element={<Asientos />} />
             </Routes>
           </BrowserRouter>
         </div>

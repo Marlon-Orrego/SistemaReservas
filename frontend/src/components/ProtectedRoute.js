@@ -1,16 +1,5 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
+//import Cookies from "universal-cookie";
 
-export default function ProtectedRoute({ children }) {
-    //CONSTANTE QUE ALMACENA EL TOKEN DEL USER
-    const user = localStorage.getItem("user")
-    //CONDICION QUE VALIDA SI EL USER EXISTE
-    //SI NO EXISTE, DEVUELVE AL LOGIN
-    if(!user){
-        return <Navigate to='/login'></Navigate>
-    }
-    //SI EXISTE, MUESTRA ASIENTOS
-    return (
-        <>{children}</>
-    )
+export default function ProtectedRoute() {
+  window.location.href = "/asientos";
 }

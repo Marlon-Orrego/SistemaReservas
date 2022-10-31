@@ -3,6 +3,9 @@ import { useState } from "react";
 import styles from "../styles";
 import "../css/login.css";
 import axios from "axios";
+import md5 from "md5";
+
+const url = "http://localhost:3000/clientes";
 
 export default function Login() {
   // Datos de usuario
@@ -18,14 +21,34 @@ export default function Login() {
     setError(" ");
     setUser({ ...user, [name]: value });
   };
-
+  const IniciarSesion = async () => {
+    await axios
+      .get(url, {
+        params: { corre: user.correo, contraseña: md5(user.password) },
+      })
+      .then((response) => {
+        return response.data;
+      })
+      .then((response) => {
+        if (response.length > 0) {
+          var respuesta = response[0];
+          localStorage.setItem("Id", respuesta.Id);
+          localStorage.setItem("Nombre", respuesta.Nombre);
+          localStorage.setItem("correo", respuesta.correo);
+          alert(`Bienvenido ${respuesta.Nombre}`);
+          window.location.href = "/";
+        } else {
+          alert("El usuario o la contraseña no son correctos");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   // Maneja el registro
   const handleSubmit = () => {
     if (handleValidate()) {
-      let url = "http://localhost:3000/clientes";
-      axios.get(url, user).then((response) => {
-        console.log(response);
-      });
+      IniciarSesion();
     }
   };
 
