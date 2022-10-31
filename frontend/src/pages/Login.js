@@ -45,6 +45,7 @@ export default function Login() {
         console.log(error);
       });
   };
+
   // Maneja el registro
   const handleSubmit = () => {
     if (handleValidate()) {
