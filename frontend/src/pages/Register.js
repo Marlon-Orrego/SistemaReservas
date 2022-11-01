@@ -29,12 +29,13 @@ export default function Register() {
       axios.post(url, user).then((response) => {
         console.log(response);
       });
+
+      window.location.href = "/";
     } else {
       console.log("No apto para el registro");
     }
-    
   };
-  
+
   //METODO QUE VALIDA EL FORMULARIO
   const handleValidate = () => {
     var correoValido =

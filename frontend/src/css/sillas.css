@@ -51,10 +51,10 @@
   background-color: #6feaf6;
 }
 .bseat.selected {
-    background-color: #6feaf6;
+    background-color: #0363ff;
   }
 .seat.occupied {
-  background-color: #fff;
+  background-color: #0363ff;
 }
 .bseat.occupied {
     background-color: #fff;
