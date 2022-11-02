@@ -1,7 +1,8 @@
 import React from "react";
 import ProtectedRoute from "./ProtectedRoute";
-
-const Button = ({ styles }) => (
+import styles from "../styles";
+const Button = (props) => (
+  localStorage.setItem("Id_Vuelo",props.data),
   <button
     onClick={ProtectedRoute}
     type="button"

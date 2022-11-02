@@ -9,11 +9,11 @@ import {
 
 const router = Router();
 
-router.get("/clientes", getReservas);
-router.get("/clientes/:Id", getReservabyId);
-router.put("/clientes/:Id", updateReserva);
-router.delete("/clientes/:Id", deleteReserva);
-router.post("/clientes", createReserva);
+router.get("/reservas", getReservas);
+router.get("/reservas/:Id", getReservabyId);
+router.put("/reservas/:Id", updateReserva);
+router.delete("/reservas/:Id", deleteReserva);
+router.post("/reservas", createReserva);
 
 
 export default router;
