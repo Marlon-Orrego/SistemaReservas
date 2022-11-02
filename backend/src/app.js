@@ -8,6 +8,7 @@ import express from "express";
 
 import VuelosRoutes from "./routes/vuelos.routes";
 import ClientesRoutes from "./routes/clientes.routes";
+import ReservasRoutes from "./routes/reservas.routes";
 
 import morgan from "morgan";
 import config from "./config";
@@ -16,6 +17,7 @@ import config from "./config";
 app.set("port", config.port);
 app.use(VuelosRoutes);
 app.use(ClientesRoutes);
+app.use(ReservasRoutes);
 
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));

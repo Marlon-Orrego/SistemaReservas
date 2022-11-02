@@ -1,10 +1,12 @@
 import "../css/sillas.css";
 import styles from "../styles";
+import axios from "axios";
+const url = "http://localhost:3000/reservas";
 
 function Sillas() {
   var suma = 0;
   var total_reserva = 0;
-  var sillas_;
+ 
   //Evento click Silla General
   const selectSeat = (seat) => {
     console.log(seat.target.index);
@@ -75,7 +77,14 @@ function Sillas() {
     total_reserva += selectedBSeatsCount * 1000;
     total.innerText = total_reserva;
   }
-  function confirmarReserva() {}
+  function confirmarReserva() {
+    //Trayendo Numero de sillas Ejecutivas Ocupadas Y su Indice
+    const CountBsillas_ocupadas=localStorage.getItem("selectedSeats")
+    const Countsillas_ocupadas=localStorage.getItem("selectedBSeats")
+    const suma_sillas_ocupadas=CountBsillas_ocupadas+Countsillas_ocupadas
+    
+    
+  }
 
   // get data from localstorage and populate ui
   /*function populateUI() {
