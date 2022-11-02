@@ -71,7 +71,7 @@ export const createReserva = async (req, res) => {
   const { Id_Reserva, Id_Vuelo, Id_Cliente, Precio } = req.body;
 
   // validating
-  if (Id == null || Id_Reserva == null || Id_Vuelo == null || Id_Cliente == null|| Precio == null) {
+  if ( Id_Reserva == null || Id_Vuelo == null || Id_Cliente == null|| Precio == null) {
     return res.status(400).json({ msg: "Bad Request. Please fill all fields" });
   }
 
@@ -79,9 +79,9 @@ export const createReserva = async (req, res) => {
     const pool = await getConnection();
     await pool
       .request()
-      .input("Id_Reserva", sql.VarChar, Id_Reserva)
-      .input("Id_Vuelo", sql.VarChar, Id_Vuelo)
-      .input("Id_Cliente", sql.VarChar, Id_Cliente)
+      .input("Id_Reserva", sql.Int, Id_Reserva)
+      .input("Id_Vuelo", sql.Int, Id_Vuelo)
+      .input("Id_Cliente", sql.Int, Id_Cliente)
       .input("Precio", sql.Int, Precio)
       .query(queriesReservas.createReserva);
     res.json({ Id_Reserva, Id_Vuelo, Id_Cliente, Precio });

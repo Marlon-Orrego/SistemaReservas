@@ -6,5 +6,5 @@ export const queriesClientes = {
     "INSERT INTO Clientes (Id,Nombre,correo,contraseña) VALUES (@Id,@Nombre,@correo,@contraseña);",
   deleteCliente: "DELETE FROM [SistemaReservas].[dbo].[Clientes] WHERE Id= @id",
   updateClientebyId:
-    "UPDATE [SistemaReservas].[dbo].[Clientes] SET Nombre = @Nombre, contraseña = @contraseña, correo = @correo, Id = @id WHERE Id = @id",
+    "UPDATE [SistemaReservas].[dbo].[Clientes] SET CountSillas = @CountSillas WHERE Id = @Id",
 };

@@ -10,7 +10,10 @@ const Navbar = () => {
   const currentUser = localStorage.getItem('Id')
   const [botonActivo, setBotonActivo] = useState(true);
   function logout() {
-    localStorage.clear();
+    localStorage.removeItem("correo");
+    localStorage.removeItem("Id");
+    localStorage.removeItem("Nombre");
+    localStorage.removeItem("#sillasSelected");
     setBotonActivo(false);
     console.log(botonActivo)
   }

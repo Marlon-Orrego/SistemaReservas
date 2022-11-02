@@ -1,7 +1,9 @@
 import "../css/sillas.css";
 import styles from "../styles";
+import { useState,useEffect } from "react";
 import axios from "axios";
 const url = "http://localhost:3000/reservas";
+const url2 = "http://localhost:3000/clientes";
 
 function Sillas() {
   var suma = 0;
@@ -9,7 +11,6 @@ function Sillas() {
  
   //Evento click Silla General
   const selectSeat = (seat) => {
-    console.log(seat.target.index);
     if (localStorage.getItem("#sillasSelected") < 3) {
       // Seat click event
       if (
@@ -19,7 +20,6 @@ function Sillas() {
         seat.target.classList.toggle("selected");
         suma += 1;
         localStorage.setItem("#sillasSelected", suma);
-        console.log(suma);
       }
       updateSelectedCount();
     } else return console.log("No es permitido más de 3 asientos");
@@ -78,17 +78,54 @@ function Sillas() {
     total.innerText = total_reserva;
   }
   function confirmarReserva() {
+    var suma_sillas_ocupadas=0
+    const selectedSeats = document.querySelectorAll(".row .seat.selected");
+    const selectedBSeats = document.querySelectorAll(".row .bseat.selected");
     //Trayendo Numero de sillas Ejecutivas Ocupadas Y su Indice
-    const CountBsillas_ocupadas=localStorage.getItem("selectedSeats")
-    const Countsillas_ocupadas=localStorage.getItem("selectedBSeats")
-    const suma_sillas_ocupadas=CountBsillas_ocupadas+Countsillas_ocupadas
+    if (localStorage.getItem("selectedSeats")!=null) {
+      const selectedSeatsCount = selectedSeats.length;
+      suma_sillas_ocupadas=selectedSeatsCount
+    }
+    if (localStorage.getItem("selectedBSeats")!=null) {
+      const selectedBSeatsCount = selectedBSeats.length;
+      suma_sillas_ocupadas+=selectedBSeatsCount
+    }
+
+    reserva.Id_Reserva= Math.floor(Math.random() * 1000);
+    reserva.Id_Cliente=parseInt(localStorage.getItem("Id"),10)
+    reserva.Id_Vuelo=parseInt(localStorage.getItem("Id_Vuelo1"),10)
+    reserva.Precio=total_reserva
     
+    guardarReserva()
     
   }
 
-  // get data from localstorage and populate ui
-  /*function populateUI() {
+  // Datos del usuario
+  const [reserva] = useState({
+    Id_Reserva: "",
+    Id_Cliente: "",
+    Id_Vuelo: "",
+    Precio: "",
+  });  
+  const guardarReserva = async () => {
+    await axios
+      .post(url, reserva) 
+      .then((response) => {
+        console.log(response);
+        if (response) {
+          alert(`Reserva Creada`);
+        } else alert(`No es posible crear la reserva`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
+  };
+
+
+  // get data from localstorage and populate ui
+  function populateUI() {
+    const seats = document.querySelectorAll(".row .seat:not(.occupied");
     const selectedSeats = JSON.parse(localStorage.getItem("selectedSeats"));
     if (selectedSeats !== null && selectedSeats.length > 0) {
       seats.forEach((seat, index) => {
@@ -97,8 +134,24 @@ function Sillas() {
         }
       });
     }
-  }*/
+  }
+    // get data from localstorage and populate ui
+    function populateUI2() {
+      const seats = document.querySelectorAll(".row .bseat:not(.occupied");
+      const selectedSeats = JSON.parse(localStorage.getItem("selectedBSeats"));
+      if (selectedSeats !== null && selectedSeats.length > 0) {
+        seats.forEach((seat, index) => {
+          if (selectedSeats.indexOf(index) > -1) {
+            seat.classList.add("selected");
+          }
+        });
+      }
+    }
 
+  useEffect(() => {
+    populateUI()
+    populateUI2()
+  }, [])  
   return (
     <div className="seats">
       <ul className="showcase">

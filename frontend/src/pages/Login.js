@@ -30,6 +30,7 @@ export default function Login() {
           localStorage.setItem("correo", response.data.correo);
           localStorage.setItem("Nombre", response.data.Nombre);
           localStorage.setItem("Id", response.data.Id);
+          localStorage.setItem("#sillasSelected", response.data.CountSillas);
           alert(`Bienvenido`);
           window.location.href = "/";
         } else alert(`Credenciales Incorrectas`);

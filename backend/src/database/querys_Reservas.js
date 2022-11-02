@@ -1,4 +1,4 @@
-export const queriesClientes = {
+export const queriesReservas = {
   getReservas: "SELECT * from Reservas",
   getReservaById: "SELECT * FROM Reservas Where Id_Reserva = @Id_Reserva",
   createReserva:

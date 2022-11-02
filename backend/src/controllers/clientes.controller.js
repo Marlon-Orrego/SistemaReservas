@@ -36,6 +36,8 @@ export const authCliente = async (req, res) => {
       Id: userFound.recordset[0].Id,
       Nombre: userFound.recordset[0].Nombre,
       correo: userFound.recordset[0].correo,
+      CountSillas: userFound.recordset[0].CountSillas,
+
     });
   } catch (error) {
     console.log(error);
@@ -72,10 +74,11 @@ export const deleteCliente = async (req, res) => {
 };
 
 export const updateCliente = async (req, res) => {
-  const { Nombre, correo, Id, contraseña } = req.body;
+  const { Id,CountSillas } = req.body;
+  console.log(req.body)
 
   // validating
-  if (Id == null || Nombre == null || correo == null || contraseña == null) {
+  if (CountSillas!=null||Id!=null) {
     return res.status(400).json({ msg: "Bad Request. Please fill all fields" });
   }
 
@@ -83,12 +86,10 @@ export const updateCliente = async (req, res) => {
     const pool = await getConnection();
     await pool
       .request()
-      .input("Nombre", sql.VarChar, Nombre)
-      .input("correo", sql.VarChar, correo)
-      .input("contraseña", sql.VarChar, contraseña)
-      .input("Id", req.params.Id)
+      .input("CountSillas", sql.Int, CountSillas)
+      .input("Id", sql.Int,Id)
       .query(queriesClientes.updateClientebyId);
-    res.json({ Nombre, correo, contraseña, Id });
+    res.json({CountSillas});
   } catch (error) {
     res.status(500);
     res.send(error.message);
