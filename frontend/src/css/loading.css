@@ -1,7 +1,24 @@
-.charger__container{
+
+body{
+    background-color: black;
+}
+
+.texto {
+    color: aliceblue;
+}
+.charger__container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+/*.charger__container{
     border: 1px solid;
     border-radius: 2%;
-    min-width: 30vw;
+    min-width: 30vw; 
     background-color: rgb(24, 23, 23);
     box-shadow: 5px 5px 5px black;
     display: flex;
@@ -14,4 +31,4 @@
 .blue {
     color: rgb(202, 144, 37);
     font-weight: bolder;
-}
+}*/

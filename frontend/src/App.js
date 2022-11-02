@@ -6,7 +6,7 @@ import Register from "./pages/Register";
 import Asientos from "./pages/Asientos";
 //import ProtectedRoute from "./components/ProtectedRoute";
 import NotFound from "./pages/404";
-//import Loading from './components/Loading';
+import Loading from './components/Loading';
 import "./css/App.css";
 
 function App() {
@@ -14,15 +14,17 @@ function App() {
     <div className="min-h-screen bg-primary overflow">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className="">
-          <BrowserRouter>
-            <Routes>
-              <Route path="/asientos" element={<Asientos />} />
-              <Route path="/" element={<Inicial></Inicial>}></Route>
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
+          <Loading>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/asientos" element={<Asientos />} />
+                <Route path="/" element={<Inicial></Inicial>}></Route>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </Loading>
         </div>
       </div>
     </div>
