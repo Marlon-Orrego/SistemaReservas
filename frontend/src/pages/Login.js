@@ -5,7 +5,7 @@ import "../css/login.css";
 import axios from "axios";
 import md5 from "md5";
 
-const url = "http://localhost:3000/clientes";
+const url = "http://localhost:3000/clientes/auth";
 
 export default function Login() {
   // Datos de usuario
@@ -23,7 +23,7 @@ export default function Login() {
   };
   const IniciarSesion = async () => {
     await axios
-      .get(url, {
+      .post(url, {
         params: { corre: user.correo, contraseña: md5(user.password) },
       })
       .then((response) => {

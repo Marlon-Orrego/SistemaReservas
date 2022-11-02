@@ -1,4 +1,5 @@
 import Sillas from "../components/Sillas";
+import Navbar2 from "../components/Navbar2";
 
 function Asientos() {
   const correo = localStorage.getItem("correo");
@@ -8,6 +9,7 @@ function Asientos() {
   } else
     return (
       <div>
+        <Navbar2></Navbar2>
         <Sillas></Sillas>
       </div>
     );

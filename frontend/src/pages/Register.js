@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "../styles";
 import "../css/register.css";
 import axios from "axios";
-
+import md5 from "md5";
 export default function Register() {
   // Datos del usuario
   const [user, setUser] = useState({
@@ -26,6 +26,7 @@ export default function Register() {
     //setUser({ ...user, repassword: '' })
     if (handleValidate()) {
       let url = "http://localhost:3000/clientes";
+      user.contraseña=md5(user.contraseña)
       axios.post(url, user).then((response) => {
         console.log(response);
       });
@@ -43,7 +44,7 @@ export default function Register() {
     if (user.Nombre.length < 8) {
       setError("Por favor ingrese su Nombre completo");
       return false;
-    } else if (user.Id < 8) {
+    } else if (user.Id < 8||user.Id>10) {
       setError("Por favor ingrese una C.C valida");
       return false;
     } else if (!user.correo.match(correoValido)) {
