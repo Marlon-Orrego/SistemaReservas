@@ -36,9 +36,11 @@ const Vuelos = () => {
                   {moment(vuelos.Fecha_llegada).utc().format("YYYY-MM-DD")}
                 </p>
               </div>
-  
-              <div className={`${styles.flexCenter} sm:ml-10 ml-0 sm:mt-0 mt-10`}>
-                  <Button onClick/>
+
+              <div
+                className={`${styles.flexCenter} sm:ml-10 ml-0 sm:mt-0 mt-10`}
+              >
+                <Button />
               </div>
             </section>
           ))

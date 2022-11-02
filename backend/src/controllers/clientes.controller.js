@@ -1,7 +1,5 @@
 import { getConnection, sql } from "../database/connection";
 import { queriesClientes } from "../database";
-import jwt from "jsonwebtoken";
-
 
 export const getClientes = async (req, res) => {
   try {
@@ -24,22 +22,21 @@ export const authCliente = async (req, res) => {
     // Request body email can be an email or username
     if (!userFound) return res.status(400).json({ message: "User Not Found" });
 
-    var matchPassword = false
-    if (req.body.contraseña==userFound.recordset[0].contraseña) {
-      matchPassword=true
-    }else matchPassword=false
-    
-    if (matchPassword==false)
+    var matchPassword = false;
+    if (req.body.contraseña == userFound.recordset[0].contraseña) {
+      matchPassword = true;
+    } else matchPassword = false;
+
+    if (matchPassword == false)
       return res.status(401).json({
-        token: null,
         message: "Invalid Password",
       });
 
-    const SECRET = process.env.SECRET
-    const token = jwt.sign({ id: userFound.recordset[0].Id }, SECRET, {
-      expiresIn: 86400, // 24 hours
+    res.json({
+      Id: userFound.recordset[0].Id,
+      Nombre: userFound.recordset[0].Nombre,
+      correo: userFound.recordset[0].correo,
     });
-    res.json({ token });
   } catch (error) {
     console.log(error);
   }

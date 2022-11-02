@@ -4,6 +4,7 @@ import styles from "../styles";
 function Sillas() {
   var suma = 0;
   var total_reserva = 0;
+  var sillas_;
   //Evento click Silla General
   const selectSeat = (seat) => {
     console.log(seat.target.index);
@@ -74,9 +75,7 @@ function Sillas() {
     total_reserva += selectedBSeatsCount * 1000;
     total.innerText = total_reserva;
   }
-  function getBack() {
-    window.location.href = "/";
-  }
+  function confirmarReserva() {}
 
   // get data from localstorage and populate ui
   /*function populateUI() {
@@ -195,7 +194,7 @@ function Sillas() {
       <br></br>
       <button
         type="button"
-        onClick={getBack}
+        onClick={confirmarReserva}
         className={`py-4 px-6 font-poppins font-medium text-[18px] text-primary bg-blue-gradient rounded-[10px] outline-none ${styles}`}
       >
         Confirmar Reserva

@@ -3,7 +3,6 @@ import { useState } from "react";
 import styles from "../styles";
 import "../css/login.css";
 import axios from "axios";
-import md5 from "md5";
 
 const url = "http://localhost:3000/clientes/auth";
 
@@ -11,7 +10,7 @@ export default function Login() {
   // Datos de usuario
   const [user, setUser] = useState({
     correo: "",
-    password: "",
+    contraseña: "",
   });
   // Mensajes de erros
   const [error, setError] = useState("");
@@ -22,24 +21,18 @@ export default function Login() {
     setUser({ ...user, [name]: value });
   };
   const IniciarSesion = async () => {
+    //user.contraseña = md5(user.contraseña);
     await axios
-      .post(url, {
-        params: { corre: user.correo, contraseña: md5(user.password) },
-      })
+      .post(url, user)
       .then((response) => {
-        return response.data;
-      })
-      .then((response) => {
-        if (response.length > 0) {
-          var respuesta = response[0];
-          localStorage.setItem("Id", respuesta.Id);
-          localStorage.setItem("Nombre", respuesta.Nombre);
-          localStorage.setItem("correo", respuesta.correo);
-          alert(`Bienvenido ${respuesta.Nombre}`);
+        console.log(response);
+        if (response.statusText === "OK") {
+          localStorage.setItem("correo", response.data.correo);
+          localStorage.setItem("Nombre", response.data.Nombre);
+          localStorage.setItem("Id", response.data.Id);
+          alert(`Bienvenido`);
           window.location.href = "/";
-        } else {
-          alert("El usuario o la contraseña no son correctos");
-        }
+        } else alert(`Credenciales Incorrectas`);
       })
       .catch((error) => {
         console.log(error);
@@ -61,7 +54,7 @@ export default function Login() {
       console.log("Email inválido");
       setError("Por favor ingrese un correo válido");
       return false;
-    } else if (user.password.length < 8) {
+    } else if (user.contraseña.length < 8) {
       console.log("contraseña inválida");
       setError("Ingrese contraseña de mínimo 8 caracteres");
       return false;
@@ -93,12 +86,12 @@ export default function Login() {
           <br></br>
 
           <div className="mb-2">
-            <label htmlFor="password" className={styles.paragraph}>
+            <label htmlFor="contraseña" className={styles.paragraph}>
               Contraseña
             </label>
             <input
               type="password"
-              name="password"
+              name="contraseña"
               onChange={handleChange}
               placeholder="Contraseña"
               className="block w-full px-4 py-2 mt-2 text-black-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
